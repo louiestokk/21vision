@@ -1,7 +1,7 @@
 
-  # Create Hero Section
+  # 21 Vision Agency
 
-  This is a code bundle for Create Hero Section. The original project is available at https://www.figma.com/design/ttGqgSFIlCHHR2FIOsL315/Create-Hero-Section.
+  Web Agenecy Website
 
   ## Running the code
 
