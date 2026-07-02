@@ -93,27 +93,27 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
+            className="flex flex-row items-center gap-3 w-full max-w-[480px]"
           >
-            <Magnetic>
+            <Magnetic className="flex-1">
               <button 
                 onClick={handleOurWorkClick}
-                className="w-full sm:w-auto relative group overflow-hidden rounded-full p-[1.5px] cursor-pointer"
+                className="w-full relative group overflow-hidden rounded-full p-[1.5px] cursor-pointer"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-500 rounded-full opacity-80 group-hover:opacity-100 transition-opacity" />
-                <div className="relative bg-zinc-950 px-8 py-3.5 rounded-full text-base font-bold text-white flex items-center justify-center gap-2 group-hover:bg-transparent transition-all">
-                  {t.ourWork} <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <div className="relative bg-zinc-950 px-4 py-3 md:px-8 md:py-4 rounded-full text-sm md:text-base font-bold text-white flex items-center justify-center gap-1.5 group-hover:bg-transparent transition-all">
+                  {t.ourWork} <ArrowUpRight className="w-4 h-4 md:w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </button>
             </Magnetic>
-            <Magnetic>
+            <Magnetic className="flex-1">
               <ConfettiButton>
                 <button 
                   onClick={() => setShowreelOpen(true)}
-                  className="w-full sm:w-auto flex items-center justify-center gap-3 bg-zinc-900/40 text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-zinc-800 hover:border-zinc-700 transition-colors cursor-pointer border border-zinc-850 backdrop-blur-md"
+                  className="w-full flex items-center justify-center gap-2.5 bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-3 md:px-8 md:py-4 rounded-full text-sm md:text-base font-semibold transition-all duration-300 cursor-pointer border border-zinc-600 hover:border-zinc-400 backdrop-blur-md hover:-translate-y-0.5 shadow-lg"
                 >
-                  <span className="w-8 h-8 rounded-full bg-black flex items-center justify-center shadow-sm">
-                    <Play className="w-4 h-4 text-white ml-0.5" />
+                  <span className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center shadow-sm shrink-0 transition-transform duration-300">
+                    <Play className="w-3 h-3 md:w-3.5 md:h-3.5 text-zinc-300 ml-0.5 fill-zinc-300" />
                   </span>
                   {t.showreel}
                 </button>
@@ -123,23 +123,25 @@ export function Hero() {
 
 
 
+
+
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="grid grid-cols-2 sm:grid-cols-3 gap-8 mt-16 pt-8 border-t border-zinc-800 w-full"
+            className="grid grid-cols-3 gap-3 md:gap-8 mt-16 pt-8 border-t border-zinc-800 w-full"
           >
             <div>
-              <div className="text-3xl font-bold text-white">150+</div>
-              <div className="text-sm text-zinc-500 mt-1">{t.projects}</div>
+              <div className="text-2xl md:text-3xl font-bold text-white">150+</div>
+              <div className="text-xs md:text-sm text-zinc-500 mt-1">{t.projects}</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-white">40+</div>
-              <div className="text-sm text-zinc-500 mt-1">{t.awards}</div>
+              <div className="text-2xl md:text-3xl font-bold text-white">40+</div>
+              <div className="text-xs md:text-sm text-zinc-500 mt-1">{t.awards}</div>
             </div>
-            <div className="hidden sm:block">
-              <div className="text-3xl font-bold text-white">99%</div>
-              <div className="text-sm text-zinc-500 mt-1">{t.clients}</div>
+            <div>
+              <div className="text-2xl md:text-3xl font-bold text-white">99%</div>
+              <div className="text-xs md:text-sm text-zinc-500 mt-1">{t.clients}</div>
             </div>
           </motion.div>
         </div>
