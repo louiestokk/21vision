@@ -55,7 +55,7 @@ export function Hero() {
 
   return (
     <>
-      <section id="home" className="relative min-h-screen pt-28 pb-20 md:pt-36 md:pb-32 px-6 md:px-12 flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-[1600px] mx-auto overflow-hidden">
+      <section id="home" className="relative min-h-screen pt-36 pb-20 md:pt-48 md:pb-32 px-6 md:px-12 flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-[1600px] mx-auto overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-zinc-800/30 blur-[120px] -z-10" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-500/10 blur-[120px] -z-10" />
         
@@ -77,7 +77,7 @@ export function Hero() {
             className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.05] tracking-tight text-white mb-6"
           >
             {t.weBuild} <br className="hidden md:block" />
-            <span className="text-zinc-500 italic font-serif">{t.digital}</span> {t.experiences}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-fuchsia-400 font-extrabold pr-1.5 italic font-serif">{t.digital}</span> {t.experiences}
           </motion.h1>
 
           <motion.p 
@@ -98,16 +98,19 @@ export function Hero() {
             <Magnetic>
               <button 
                 onClick={handleOurWorkClick}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white text-black px-8 py-4 rounded-full text-base font-semibold hover:scale-102 transition-all cursor-pointer"
+                className="w-full sm:w-auto relative group overflow-hidden rounded-full p-[1.5px] cursor-pointer"
               >
-                {t.ourWork} <ArrowUpRight className="w-5 h-5" />
+                <span className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-500 rounded-full opacity-80 group-hover:opacity-100 transition-opacity" />
+                <div className="relative bg-zinc-950 px-8 py-3.5 rounded-full text-base font-bold text-white flex items-center justify-center gap-2 group-hover:bg-transparent transition-all">
+                  {t.ourWork} <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </div>
               </button>
             </Magnetic>
             <Magnetic>
               <ConfettiButton>
                 <button 
                   onClick={() => setShowreelOpen(true)}
-                  className="w-full sm:w-auto flex items-center justify-center gap-3 bg-zinc-900/60 text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-zinc-800 transition-colors cursor-pointer border border-zinc-850 backdrop-blur-md"
+                  className="w-full sm:w-auto flex items-center justify-center gap-3 bg-zinc-900/40 text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-zinc-800 hover:border-zinc-700 transition-colors cursor-pointer border border-zinc-850 backdrop-blur-md"
                 >
                   <span className="w-8 h-8 rounded-full bg-black flex items-center justify-center shadow-sm">
                     <Play className="w-4 h-4 text-white ml-0.5" />
@@ -117,6 +120,8 @@ export function Hero() {
               </ConfettiButton>
             </Magnetic>
           </motion.div>
+
+
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }}

@@ -9,6 +9,7 @@ import { Contact } from "./components/Contact";
 import { CaseDetails } from "./components/CaseDetails";
 import { Footer } from "./components/Footer";
 import { CustomCursor } from "./components/ui/CustomCursor";
+import { Loader } from "./components/ui/Loader";
 import { LanguageProvider } from "./LanguageContext";
 
 function ScrollToTop() {
@@ -36,6 +37,7 @@ function LandingPage() {
 function AppContent() {
   return (
     <div className="dark min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black cursor-none">
+      <Loader />
       <CustomCursor />
       <Navbar />
       
