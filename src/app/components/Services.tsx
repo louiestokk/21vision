@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { MonitorSmartphone, Paintbrush, Megaphone, Lightbulb } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
+import { Magnetic } from "./ui/Magnetic";
 
 export function Services() {
   const { lang } = useLanguage();
@@ -62,6 +63,10 @@ export function Services() {
     { color: "text-emerald-400", bg: "bg-emerald-400/10" }
   ];
 
+  const handleContactScroll = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section id="services" className="py-24 px-6 md:px-12 max-w-[1600px] mx-auto">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -71,9 +76,14 @@ export function Services() {
             {t.desc}
           </p>
         </div>
-        <button className="text-white border-b border-white pb-1 hover:text-zinc-300 hover:border-zinc-300 transition-colors self-start md:self-auto font-medium">
-          {t.viewAll}
-        </button>
+        <Magnetic>
+          <button 
+            onClick={handleContactScroll}
+            className="text-white border-b border-white pb-1 hover:text-zinc-300 hover:border-zinc-300 transition-colors self-start md:self-auto font-medium cursor-pointer"
+          >
+            {t.viewAll}
+          </button>
+        </Magnetic>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

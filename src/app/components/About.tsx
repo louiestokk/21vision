@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { useLanguage } from "../LanguageContext";
+import { Magnetic } from "./ui/Magnetic";
 
 export function About() {
   const { lang } = useLanguage();
@@ -23,6 +24,10 @@ export function About() {
     }
   }[lang];
 
+  const handleContactScroll = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section id="about" className="py-24 px-6 md:px-12 max-w-[1600px] mx-auto border-t border-zinc-800/50 mt-12">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -40,9 +45,14 @@ export function About() {
           </p>
           
           <div className="flex gap-4">
-            <button className="bg-white text-black px-8 py-4 rounded-full text-base font-medium hover:scale-105 transition-transform">
-              {t.btn}
-            </button>
+            <Magnetic>
+              <button 
+                onClick={handleContactScroll}
+                className="bg-white text-black px-8 py-4 rounded-full text-base font-semibold hover:scale-102 transition-all cursor-pointer"
+              >
+                {t.btn}
+              </button>
+            </Magnetic>
           </div>
         </motion.div>
 

@@ -1,33 +1,52 @@
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Services } from "./components/Services";
 import { Cases } from "./components/Cases";
 import { About } from "./components/About";
 import { Contact } from "./components/Contact";
-import { LanguageProvider, useLanguage } from "./LanguageContext";
+import { CaseDetails } from "./components/CaseDetails";
+import { Footer } from "./components/Footer";
+import { CustomCursor } from "./components/ui/CustomCursor";
+import { LanguageProvider } from "./LanguageContext";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+function LandingPage() {
+  return (
+    <>
+      <Hero />
+      <Services />
+      <Cases />
+      <About />
+      <Contact />
+    </>
+  );
+}
 
 function AppContent() {
-  const { lang } = useLanguage();
-  
-  const footerText = {
-    sv: `© ${new Date().getFullYear()} Agency. Alla rättigheter förbehållna.`,
-    en: `© ${new Date().getFullYear()} Agency. All rights reserved.`
-  }[lang];
-
   return (
-    <div className="dark min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black">
+    <div className="dark min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black cursor-none">
+      <CustomCursor />
       <Navbar />
+      
       <main>
-        <Hero />
-        <Services />
-        <Cases />
-        <About />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/case/:id" element={<CaseDetails />} />
+        </Routes>
       </main>
       
-      <footer className="py-12 border-t border-zinc-900 mt-24 text-center">
-        <p className="text-zinc-500">{footerText}</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
@@ -35,7 +54,10 @@ function AppContent() {
 export default function App() {
   return (
     <LanguageProvider>
-      <AppContent />
+      <BrowserRouter>
+        <ScrollToTop />
+        <AppContent />
+      </BrowserRouter>
     </LanguageProvider>
   );
 }

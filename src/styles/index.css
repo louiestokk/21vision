@@ -1,3 +1,21 @@
 @import './fonts.css';
 @import './tailwind.css';
 @import './theme.css';
+
+/* Custom cursor hide for desktop */
+@media (pointer: fine) {
+  body, a, button, input, textarea, select, [role="button"] {
+    cursor: none !important;
+  }
+}
+
+/* Smooth scroll behaviors */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection aesthetics */
+::selection {
+  background-color: #ffffff;
+  color: #000000;
+}
