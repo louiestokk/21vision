@@ -7,6 +7,11 @@ import { Cases } from "./components/Cases";
 import { About } from "./components/About";
 import { Contact } from "./components/Contact";
 import { CaseDetails } from "./components/CaseDetails";
+import { AllServices } from "./components/AllServices";
+import { SEODetails } from "./components/SEODetails";
+import { WebsitesDetails } from "./components/WebsitesDetails";
+import { SEOSection } from "./components/SEOSection";
+import { WebsitesSection } from "./components/WebsitesSection";
 import { Footer } from "./components/Footer";
 import { CustomCursor } from "./components/ui/CustomCursor";
 import { Loader } from "./components/ui/Loader";
@@ -27,6 +32,8 @@ function LandingPage() {
     <>
       <Hero />
       <Services />
+      <WebsitesSection />
+      <SEOSection />
       <Cases />
       <About />
       <Contact />
@@ -45,6 +52,9 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/case/:id" element={<CaseDetails />} />
+          <Route path="/services" element={<AllServices />} />
+          <Route path="/seo" element={<SEODetails />} />
+          <Route path="/hemsidor" element={<WebsitesDetails />} />
         </Routes>
       </main>
       

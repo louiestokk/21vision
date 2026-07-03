@@ -1,10 +1,12 @@
 import { motion } from "motion/react";
 import { MonitorSmartphone, Paintbrush, Megaphone, Lightbulb } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
+import { useNavigate } from "react-router";
 import { Magnetic } from "./ui/Magnetic";
 
 export function Services() {
   const { lang } = useLanguage();
+  const navigate = useNavigate();
 
   const t = {
     sv: {
@@ -63,8 +65,8 @@ export function Services() {
     { color: "text-emerald-400", bg: "bg-emerald-400/10" }
   ];
 
-  const handleContactScroll = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  const handleViewAllClick = () => {
+    navigate("/services");
   };
 
   return (
@@ -78,7 +80,7 @@ export function Services() {
         </div>
         <Magnetic>
           <button 
-            onClick={handleContactScroll}
+            onClick={handleViewAllClick}
             className="text-white border-b border-white pb-1 hover:text-zinc-300 hover:border-zinc-300 transition-colors self-start md:self-auto font-medium cursor-pointer"
           >
             {t.viewAll}
