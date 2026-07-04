@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { MonitorSmartphone, Paintbrush, Megaphone, Lightbulb } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
 import { useNavigate } from "react-router";
 import { Magnetic } from "./ui/Magnetic";
 
-// VISUAL CARD 1: Design Visual (Figma canvas mock clicking a button with a ripple)
+// VISUAL CARD 1: Design Visual (Static Figma canvas mock)
 function DesignVisual() {
   return (
     <div className="w-full h-36 bg-zinc-950/70 border border-zinc-900/60 rounded-2xl relative overflow-hidden flex items-center justify-center shadow-inner">
@@ -18,64 +17,32 @@ function DesignVisual() {
         <rect x="25" y="25" width="60" height="8" rx="2" fill="#27272a" />
         <rect x="25" y="40" width="40" height="6" rx="2" fill="#1f2937" />
         
-        {/* Animating interface button */}
-        <motion.rect
+        {/* Active interface button */}
+        <rect
           x="125"
           y="38"
           width="70"
           height="24"
           rx="12"
-          fill="#1e1b4b"
+          fill="#4f46e5"
           stroke="#4f46e5"
           strokeWidth="1.5"
-          animate={{
-            scale: [1, 0.94, 1],
-            backgroundColor: ["#1e1b4b", "#4f46e5", "#1e1b4b"],
-          }}
-          transition={{
-            duration: 3.2,
-            repeat: Infinity,
-            ease: "easeInOut",
-            repeatDelay: 1,
-          }}
-          className="cursor-pointer"
         />
-        <text x="160" y="53" textAnchor="middle" fill="#a5b4fc" className="text-[8px] font-bold font-mono tracking-wider">CLICK</text>
+        <text x="160" y="53" textAnchor="middle" fill="#ffffff" className="text-[8px] font-bold font-mono tracking-wider">CLICKED</text>
 
-        {/* Expanding cursor click ripple */}
-        <motion.circle
+        {/* Static cursor click ripple */}
+        <circle
           cx="160"
           cy="50"
-          r="0"
+          r="16"
           fill="none"
           stroke="#818cf8"
-          strokeWidth="1.5"
-          animate={{
-            r: [0, 24],
-            opacity: [0.8, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeOut",
-            repeatDelay: 2.7,
-            delay: 0.3,
-          }}
+          strokeWidth="1"
+          opacity="0.3"
         />
 
-        {/* Figma styled Pointer Arrow */}
-        <motion.g
-          initial={{ x: 195, y: 75 }}
-          animate={{
-            x: [195, 160, 195],
-            y: [75, 50, 75],
-          }}
-          transition={{
-            duration: 4.2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
+        {/* Figma styled Pointer Arrow positioned at clicked button */}
+        <g transform="translate(162, 52)">
           <path
             d="M 0,0 L 12,4 L 6,6 L 4,12 Z"
             fill="#ffffff"
@@ -83,13 +50,13 @@ function DesignVisual() {
             strokeWidth="1.2"
             strokeLinejoin="round"
           />
-        </motion.g>
+        </g>
       </svg>
     </div>
   );
 }
 
-// VISUAL CARD 2: Web & App Dev (Sleek flexing container workspace)
+// VISUAL CARD 2: Web & App Dev (Static flexing container workspace)
 function DevelopmentVisual() {
   return (
     <div className="w-full h-36 bg-zinc-950/70 border border-zinc-900/60 rounded-2xl relative overflow-hidden flex items-center justify-center shadow-inner">
@@ -104,43 +71,21 @@ function DevelopmentVisual() {
           <span className="text-[8px] font-mono text-zinc-650">Component.tsx</span>
         </div>
 
-        {/* Layout container changing alignment dynamically */}
-        <div className="flex-1 flex items-center justify-center gap-3 relative py-2">
-          <motion.div
-            animate={{
-              width: ["65px", "95px", "65px"],
-              height: ["42px", "32px", "42px"],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="bg-blue-500/10 border border-blue-500/30 rounded-lg flex items-center justify-center relative overflow-hidden"
-          >
-            <div className="w-3 h-3 rounded bg-blue-400/40" />
-          </motion.div>
+        {/* Layout container showing clean layout elements */}
+        <div className="flex-1 flex items-center justify-center gap-3 py-2">
+          <div className="w-[75px] h-[40px] bg-blue-500/10 border border-blue-500/30 rounded-lg flex items-center justify-center">
+            <div className="w-3 h-3 rounded bg-blue-400/45" />
+          </div>
 
-          <motion.div
-            animate={{
-              width: ["95px", "65px", "95px"],
-              height: ["32px", "42px", "32px"],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="bg-indigo-500/10 border border-indigo-500/30 rounded-lg flex items-center justify-center relative overflow-hidden"
-          >
-            <div className="w-3 h-3 rounded bg-indigo-400/40" />
-          </motion.div>
+          <div className="w-[85px] h-[36px] bg-indigo-500/10 border border-indigo-500/30 rounded-lg flex items-center justify-center">
+            <div className="w-3 h-3 rounded bg-indigo-400/45" />
+          </div>
         </div>
 
         {/* Compiler status bar */}
         <div className="text-[8px] font-mono text-zinc-550 flex items-center justify-between border-t border-zinc-900/80 pt-2">
-          <span className="text-emerald-400 flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-emerald-450 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             Vite: 8ms
           </span>
           <span>99% Score</span>
@@ -150,73 +95,33 @@ function DevelopmentVisual() {
   );
 }
 
-// VISUAL CARD 3: Brand Strategy (Typography morphing inside mask)
+// VISUAL CARD 3: Brand Strategy (Static brand identity guides)
 function StrategyVisual() {
-  const words = ["IDENTITY", "VISION", "STRATEGY", "POSITIONING"];
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex(prev => (prev + 1) % words.length);
-    }, 2500);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <div className="w-full h-36 bg-zinc-950/70 border border-zinc-900/60 rounded-2xl relative overflow-hidden flex items-center justify-center shadow-inner">
       <div className="flex flex-col items-center justify-center gap-2.5 relative z-10">
-        {/* Soft background shape rotating and morphing */}
+        {/* Soft background shape */}
         <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
-          <motion.div
-            animate={{
-              rotate: 360,
-              borderRadius: ["30% 70% 70% 30% / 30% 30% 70% 70%", "50% 50% 50% 50%", "30% 70% 70% 30% / 30% 30% 70% 70%"],
-            }}
-            transition={{
-              duration: 9,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="w-28 h-28 bg-gradient-to-r from-amber-400 to-amber-600 blur-[10px]"
-          />
+          <div className="w-28 h-28 bg-gradient-to-r from-amber-400 to-amber-600 blur-[10px] rounded-full" />
         </div>
 
-        {/* Wordmask text element */}
-        <div className="h-6 overflow-hidden flex items-center justify-center relative">
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={index}
-              initial={{ y: 15, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -15, opacity: 0 }}
-              transition={{ duration: 0.45, ease: "easeInOut" }}
-              className="text-xs font-mono font-extrabold text-amber-400 tracking-[0.25em]"
-            >
-              {words[index]}
-            </motion.span>
-          </AnimatePresence>
+        {/* Strategic tags layout */}
+        <div className="flex flex-wrap gap-1.5 justify-center max-w-[170px]">
+          <span className="text-[8px] font-mono font-extrabold px-2 py-0.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-full tracking-wider">IDENTITY</span>
+          <span className="text-[8px] font-mono font-extrabold px-2 py-0.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-full tracking-wider">VISION</span>
+          <span className="text-[8px] font-mono font-extrabold px-2 py-0.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-full tracking-wider">STRATEGY</span>
         </div>
 
         {/* Target alignment guidelines */}
-        <div className="w-24 h-0.5 bg-zinc-900 relative">
-          <motion.div
-            animate={{
-              left: ["0%", "100%", "0%"],
-            }}
-            transition={{
-              duration: 3.8,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute w-2 h-2 rounded-full bg-amber-400/80 -top-0.5 -translate-x-1 shadow-md shadow-amber-500/20"
-          />
+        <div className="w-24 h-0.5 bg-zinc-900 relative mt-1">
+          <div className="absolute w-2 h-2 rounded-full bg-amber-400/80 -top-0.5 left-[60%] -translate-x-1 shadow-md shadow-amber-500/20" />
         </div>
       </div>
     </div>
   );
 }
 
-// VISUAL CARD 4: Marketing Visual (Sparkline graphing growth with floating metric bubbles)
+// VISUAL CARD 4: Marketing Visual (Static growth sparkline and metric indicators)
 function MarketingVisual() {
   return (
     <div className="w-full h-36 bg-zinc-950/70 border border-zinc-900/60 rounded-2xl relative overflow-hidden flex items-center justify-center shadow-inner">
@@ -232,61 +137,30 @@ function MarketingVisual() {
         <line x1="0" y1="60" x2="200" y2="60" stroke="#18181b" strokeWidth="0.75" strokeDasharray="2 2" />
         <line x1="0" y1="30" x2="200" y2="30" stroke="#18181b" strokeWidth="0.75" strokeDasharray="2 2" />
 
-        <motion.path
+        <path
           d="M 10,70 Q 50,65 90,40 T 170,15 L 170,80 L 10,80 Z"
           fill="url(#servicesMktGrad)"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
         />
 
-        <motion.path
+        <path
           d="M 10,70 Q 50,65 90,40 T 170,15"
           fill="none"
           stroke="#10b981"
           strokeWidth="2.5"
           strokeLinecap="round"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2, ease: "easeInOut", repeat: Infinity, repeatDelay: 2 }}
         />
 
-        {/* Bubble Leads */}
-        <motion.g
-          animate={{
-            y: [-10, -50],
-            x: [110, 115, 110],
-            opacity: [0, 1, 0],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeOut",
-          }}
-          className="text-[8px] font-sans font-bold fill-emerald-400"
-        >
-          <circle cx="110" cy="50" r="8" fill="#065f46" stroke="#059669" strokeWidth="0.5" />
-          <text x="110" y="53" textAnchor="middle" className="text-[5px]">Leads</text>
-        </motion.g>
+        {/* Stable Bubble Leads */}
+        <g className="text-[8px] font-sans font-bold fill-emerald-400" transform="translate(0, -25)">
+          <circle cx="100" cy="50" r="8" fill="#065f46" stroke="#059669" strokeWidth="0.5" />
+          <text x="100" y="53" textAnchor="middle" className="text-[5px]">Leads</text>
+        </g>
 
-        {/* Bubble ROI */}
-        <motion.g
-          animate={{
-            y: [-20, -65],
-            x: [160, 155, 160],
-            opacity: [0, 1, 0],
-          }}
-          transition={{
-            duration: 3.5,
-            repeat: Infinity,
-            ease: "easeOut",
-            delay: 1,
-          }}
-          className="text-[8px] font-sans font-bold fill-emerald-400"
-        >
+        {/* Stable Bubble ROI */}
+        <g className="text-[8px] font-sans font-bold fill-emerald-400" transform="translate(0, -35)">
           <circle cx="160" cy="50" r="10" fill="#065f46" stroke="#059669" strokeWidth="0.5" />
           <text x="160" y="53" textAnchor="middle" className="text-[5px]">ROI: 5x</text>
-        </motion.g>
+        </g>
       </svg>
     </div>
   );
